@@ -27,7 +27,7 @@ namespace IceSubs
         public int MediaID { get; set; }
         public int LanguageID { get; set; }
         public Nullable<int> RatingsID { get; set; }
-        public Nullable<int> Counter { get; set; }
+        public Nullable<int> Downloads { get; set; }
     
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual IceUser IceUser { get; set; }

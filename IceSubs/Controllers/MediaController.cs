@@ -9,11 +9,11 @@ namespace IceSubs.Controllers
 {
     public class MediaController : Controller
     {
+
+        MediaRepository repository = new MediaRepository();
       
         public ActionResult Newest()
         {
-            MediaRepository repository = new MediaRepository();
-
             IQueryable<Medium> newestMedia = (from item in repository.GetAllMedia()
                                               orderby item.DateAdded descending
                                               select item);
@@ -22,43 +22,41 @@ namespace IceSubs.Controllers
 
         public ActionResult Popular()
         {
-            //need to use union here 
-            //no connection between media and rating...
-            return View();
+          
+            IQueryable<Medium> mostPopular = (from item in repository.GetAllMedia()
+                                              orderby item.Translation.Downloads descending
+                                              select item);
+            return View(mostPopular);
         }
 
         public ActionResult All()
         {
-            MediaRepository repository = new MediaRepository();
-            IQueryable<Medium> AllMedia = (from item in repository.GetAllMedia()
+            IQueryable<Medium> allMedia = (from item in repository.GetAllMedia()
                                               orderby item.Title ascending
                                               select item);
-            return View(AllMedia);
+            return View(allMedia);
         }
 
         public ActionResult Movies()
         {
-            MediaRepository repository = new MediaRepository();
-            IQueryable<Medium> MovieMedia = (from item in repository.GetAllMedia()
+            IQueryable<Medium> movieMedia = (from item in repository.GetAllMedia()
                                                 where item.MediaType == "Movie"
                                                 orderby item.Title ascending //sorted in alpha order
                                                 select item);
-            return View(MovieMedia);
+            return View(movieMedia);
         }
 
         public ActionResult TvSeries()
         {
-            MediaRepository repository = new MediaRepository();
-            IQueryable<Medium> MovieMedia = (from item in repository.GetAllMedia()
+            IQueryable<Medium> movieMedia = (from item in repository.GetAllMedia()
                                                 where item.MediaType == "TV Series"
                                                 orderby item.Title ascending //sorted in alpha order
                                                 select item);
-            return View(MovieMedia);
-            return View();
+            return View(movieMedia);
         }
 
 
-        public ActionResult Detail() //detailed view
+        public ActionResult Detail() //detailed view, TODO: implement
         {
             return View();
         }

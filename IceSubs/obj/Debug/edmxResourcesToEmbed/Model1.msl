@@ -67,7 +67,6 @@
         <MappingFragment StoreEntitySet="Ratings">
           <ScalarProperty Name="RatingsID" ColumnName="RatingsID" />
           <ScalarProperty Name="Stars" ColumnName="Stars" />
-          <ScalarProperty Name="Votes" ColumnName="Votes" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -95,7 +94,7 @@
     <EntitySetMapping Name="Translations">
       <EntityTypeMapping TypeName="VERK014_H40Model.Translation">
         <MappingFragment StoreEntitySet="Translation">
-          <ScalarProperty Name="Counter" ColumnName="Counter" />
+          <ScalarProperty Name="Downloads" ColumnName="Downloads" />
           <ScalarProperty Name="TranslationID" ColumnName="TranslationID" />
           <ScalarProperty Name="Accepted" ColumnName="Accepted" />
           <ScalarProperty Name="IceUserID" ColumnName="IceUserID" />

@@ -62,7 +62,6 @@
     </Key>
     <Property Name="RatingsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Stars" Type="int" />
-    <Property Name="Votes" Type="int" />
   </EntityType>
   <EntityType Name="RequestTranslation">
     <Key>
@@ -93,7 +92,7 @@
     <Property Name="MediaID" Type="int" Nullable="false" />
     <Property Name="LanguageID" Type="int" Nullable="false" />
     <Property Name="RatingsID" Type="int" />
-    <Property Name="Counter" Type="int" />
+    <Property Name="Downloads" Type="int" />
   </EntityType>
   <EntityType Name="TranslationLines">
     <Key>

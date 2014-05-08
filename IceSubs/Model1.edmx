@@ -67,7 +67,6 @@
           </Key>
           <Property Name="RatingsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Stars" Type="int" />
-          <Property Name="Votes" Type="int" />
         </EntityType>
         <EntityType Name="RequestTranslation">
           <Key>
@@ -98,7 +97,7 @@
           <Property Name="MediaID" Type="int" Nullable="false" />
           <Property Name="LanguageID" Type="int" Nullable="false" />
           <Property Name="RatingsID" Type="int" />
-          <Property Name="Counter" Type="int" />
+          <Property Name="Downloads" Type="int" />
         </EntityType>
         <EntityType Name="TranslationLines">
           <Key>
@@ -446,7 +445,6 @@
           </Key>
           <Property Name="RatingsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Stars" Type="Int32" />
-          <Property Name="Votes" Type="Int32" />
           <NavigationProperty Name="Translations" Relationship="Self.FK_Translation_Ratings" FromRole="Ratings" ToRole="Translation" />
         </EntityType>
         <EntityType Name="RequestTranslation">
@@ -488,8 +486,8 @@
           <NavigationProperty Name="Medium" Relationship="Self.FK_Translation_Media" FromRole="Translation" ToRole="Media" />
           <NavigationProperty Name="Rating" Relationship="Self.FK_Translation_Ratings" FromRole="Translation" ToRole="Ratings" />
           <NavigationProperty Name="TranslationLines" Relationship="Self.FK_TranslationLines_Translation" FromRole="Translation" ToRole="TranslationLines" />
-          <Property Name="Counter" Type="Int32" />
           <NavigationProperty Name="Media" Relationship="VERK014_H40Model.FK_Media_Translation" FromRole="Translation" ToRole="Medium" />
+          <Property Name="Downloads" Type="Int32" />
         </EntityType>
         <EntityType Name="TranslationLine">
           <Key>
@@ -829,7 +827,6 @@
               <MappingFragment StoreEntitySet="Ratings">
                 <ScalarProperty Name="RatingsID" ColumnName="RatingsID" />
                 <ScalarProperty Name="Stars" ColumnName="Stars" />
-                <ScalarProperty Name="Votes" ColumnName="Votes" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -857,7 +854,7 @@
           <EntitySetMapping Name="Translations">
             <EntityTypeMapping TypeName="VERK014_H40Model.Translation">
               <MappingFragment StoreEntitySet="Translation">
-                <ScalarProperty Name="Counter" ColumnName="Counter" />
+                <ScalarProperty Name="Downloads" ColumnName="Downloads" />
                 <ScalarProperty Name="TranslationID" ColumnName="TranslationID" />
                 <ScalarProperty Name="Accepted" ColumnName="Accepted" />
                 <ScalarProperty Name="IceUserID" ColumnName="IceUserID" />
