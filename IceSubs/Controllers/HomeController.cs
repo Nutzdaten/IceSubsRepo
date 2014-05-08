@@ -13,17 +13,5 @@ namespace IceSubs.Controllers
             return View();
         }
 
-        public ActionResult Browse()
-        {
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
     }
 }

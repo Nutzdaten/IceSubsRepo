@@ -6,30 +6,11 @@
     <title>i c e s u b s</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="~/Content/main.css" />
-
-    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css' />
 
 </head>
+
 <body>
-
-
-    <div class="container-popup">
-        <div class="popup">
-            <div class="LogIn">
-                <h2>Log In</h2>
-
-                <form action="#" method="post">
-                    <input type="text" placeholder="Username" class="input" />
-                    <input type="password" placeholder="Password" class="input" /> <br />
-                    <a href="#" class="signInConfirm">Log In</a>
-                </form>
-
-                <a href="#" id="recoverPassword">Forgot password?</a>
-                <input type="button" value="Sign Up" id="signUp" />
-                <input type="button" value="Quit" id="QuitBtn" />
-            </div>
-        </div>
-    </div>
 
     <div id="top_header">
         <div class="container">
@@ -49,16 +30,19 @@
         </div>
     </div>
 
-  
+    <div id="menu_header">
+        <div class="container">
             <div id="menubar">
                 <ul>
-                    <li>@Html.ActionLink("New", "Browse", "Home")</li>
-                    <li>@Html.ActionLink("Popular", "", "Home")</li>
-                    <li>@Html.ActionLink("All", "All", "Home")</li>
-                    <li>@Html.ActionLink("Movies", "Movies", "Home")</li>
-                    <li>@Html.ActionLink("TV series", "TvSeries", "Home")</li>
+                    <li>@Html.ActionLink("Newest", "Newest", "Media")</li>
+                    <li>@Html.ActionLink("Popular", "Popular", "Media")</li>
+                    <li>@Html.ActionLink("All", "All", "Media")</li>
+                    <li>@Html.ActionLink("Movies", "Movies", "Media")</li>
+                    <li>@Html.ActionLink("TV series", "TvSeries", "Media")</li>
                 </ul>
             </div>
+        </div>
+    </div>
 
 
     <div id="menu_header">
@@ -67,8 +51,9 @@
         </div>
     </div>
 
+
     <div class="container">
-       @RenderBody()
+        @RenderBody()
     </div>
 
     <div id="footer">
@@ -87,5 +72,8 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     <script src="~/Scripts/scripts.js"></script>
+
 </body>
 </html>
+
+
