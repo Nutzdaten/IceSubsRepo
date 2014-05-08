@@ -29,6 +29,7 @@
         <AssociationConnector Association="VERK014_H40Model.FK_Translation_Ratings" ManuallyRouted="false" />
         <AssociationConnector Association="VERK014_H40Model.FK_SuggestMedia_RequestTranslation" ManuallyRouted="false" />
         <AssociationConnector Association="VERK014_H40Model.FK_TranslationLines_Translation" ManuallyRouted="false" />
+        <AssociationConnector Association="VERK014_H40Model.FK_Media_Translation" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

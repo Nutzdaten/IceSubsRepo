@@ -44,6 +44,10 @@
     <EntitySetMapping Name="Media">
       <EntityTypeMapping TypeName="VERK014_H40Model.Medium">
         <MappingFragment StoreEntitySet="Media">
+<<<<<<< HEAD
+=======
+          <ScalarProperty Name="TranslationID" ColumnName="TranslationID" />
+>>>>>>> e160d39519ce8f2771b4fce45637295603004ac7
           <ScalarProperty Name="MediaID" ColumnName="MediaID" />
           <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="Year" ColumnName="Year" />
@@ -66,7 +70,10 @@
         <MappingFragment StoreEntitySet="Ratings">
           <ScalarProperty Name="RatingsID" ColumnName="RatingsID" />
           <ScalarProperty Name="Stars" ColumnName="Stars" />
+<<<<<<< HEAD
           <ScalarProperty Name="Votes" ColumnName="Votes" />
+=======
+>>>>>>> e160d39519ce8f2771b4fce45637295603004ac7
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -94,6 +101,10 @@
     <EntitySetMapping Name="Translations">
       <EntityTypeMapping TypeName="VERK014_H40Model.Translation">
         <MappingFragment StoreEntitySet="Translation">
+<<<<<<< HEAD
+=======
+          <ScalarProperty Name="Downloads" ColumnName="Downloads" />
+>>>>>>> e160d39519ce8f2771b4fce45637295603004ac7
           <ScalarProperty Name="TranslationID" ColumnName="TranslationID" />
           <ScalarProperty Name="Accepted" ColumnName="Accepted" />
           <ScalarProperty Name="IceUserID" ColumnName="IceUserID" />

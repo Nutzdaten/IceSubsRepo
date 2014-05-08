@@ -69,6 +69,11 @@
     <NavigationProperty Name="Language" Relationship="Self.FK_Media_Language" FromRole="Media" ToRole="Language" />
     <NavigationProperty Name="RequestTranslations" Relationship="Self.FK_RequestTranslation_Media" FromRole="Media" ToRole="RequestTranslation" />
     <NavigationProperty Name="Translations" Relationship="Self.FK_Translation_Media" FromRole="Media" ToRole="Translation" />
+<<<<<<< HEAD
+=======
+    <Property Name="TranslationID" Type="Int32" />
+    <NavigationProperty Name="Translation" Relationship="VERK014_H40Model.FK_Media_Translation" FromRole="Medium" ToRole="Translation" />
+>>>>>>> e160d39519ce8f2771b4fce45637295603004ac7
   </EntityType>
   <EntityType Name="Rating">
     <Key>
@@ -76,7 +81,10 @@
     </Key>
     <Property Name="RatingsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Stars" Type="Int32" />
+<<<<<<< HEAD
     <Property Name="Votes" Type="Int32" />
+=======
+>>>>>>> e160d39519ce8f2771b4fce45637295603004ac7
     <NavigationProperty Name="Translations" Relationship="Self.FK_Translation_Ratings" FromRole="Ratings" ToRole="Translation" />
   </EntityType>
   <EntityType Name="RequestTranslation">
@@ -118,6 +126,11 @@
     <NavigationProperty Name="Medium" Relationship="Self.FK_Translation_Media" FromRole="Translation" ToRole="Media" />
     <NavigationProperty Name="Rating" Relationship="Self.FK_Translation_Ratings" FromRole="Translation" ToRole="Ratings" />
     <NavigationProperty Name="TranslationLines" Relationship="Self.FK_TranslationLines_Translation" FromRole="Translation" ToRole="TranslationLines" />
+<<<<<<< HEAD
+=======
+    <NavigationProperty Name="Media" Relationship="VERK014_H40Model.FK_Media_Translation" FromRole="Translation" ToRole="Medium" />
+    <Property Name="Downloads" Type="Int32" />
+>>>>>>> e160d39519ce8f2771b4fce45637295603004ac7
   </EntityType>
   <EntityType Name="TranslationLine">
     <Key>
@@ -368,5 +381,25 @@
       <End Role="Translation" EntitySet="Translations" />
       <End Role="TranslationLines" EntitySet="TranslationLines" />
     </AssociationSet>
+<<<<<<< HEAD
   </EntityContainer>
+=======
+    <AssociationSet Name="FK_Media_Translation" Association="VERK014_H40Model.FK_Media_Translation">
+      <End Role="Translation" EntitySet="Translations" />
+      <End Role="Medium" EntitySet="Media" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="FK_Media_Translation">
+    <End Type="VERK014_H40Model.Translation" Role="Translation" Multiplicity="0..1" />
+    <End Type="VERK014_H40Model.Medium" Role="Medium" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Translation">
+        <PropertyRef Name="TranslationID" />
+      </Principal>
+      <Dependent Role="Medium">
+        <PropertyRef Name="TranslationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+>>>>>>> e160d39519ce8f2771b4fce45637295603004ac7
 </Schema>

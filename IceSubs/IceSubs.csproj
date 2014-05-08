@@ -240,6 +240,12 @@
     <Content Include="gfx\netflix.png" />
     <Content Include="gfx\no_image.png" />
     <Content Include="gfx\questionIcon.png" />
+    <Content Include="gfx\rating0.png" />
+    <Content Include="gfx\rating1.png" />
+    <Content Include="gfx\rating2.png" />
+    <Content Include="gfx\rating3.png" />
+    <Content Include="gfx\rating4.png" />
+    <Content Include="gfx\rating5.png" />
     <Content Include="gfx\stardust.png" />
     <Content Include="gfx\stars.png" />
     <Content Include="gfx\ted.jpg" />
@@ -315,6 +321,7 @@
     <Content Include="Views\Media\All.cshtml" />
     <Content Include="Views\Media\Movies.cshtml" />
     <Content Include="Views\Media\TvSeries.cshtml" />
+    <Content Include="Views\Media\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="VERK014_H40Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="VERK014_H40Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Comments">
           <Key>
             <PropertyRef Name="CommentsID" />
@@ -59,6 +59,7 @@
           <Property Name="LanguageID" Type="int" Nullable="false" />
           <Property Name="GenreID" Type="int" Nullable="false" />
           <Property Name="DateAdded" Type="datetime" Nullable="false" />
+          <Property Name="TranslationID" Type="int" />
         </EntityType>
         <EntityType Name="Ratings">
           <Key>
@@ -66,7 +67,6 @@
           </Key>
           <Property Name="RatingsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Stars" Type="int" />
-          <Property Name="Votes" Type="int" />
         </EntityType>
         <EntityType Name="RequestTranslation">
           <Key>
@@ -97,6 +97,7 @@
           <Property Name="MediaID" Type="int" Nullable="false" />
           <Property Name="LanguageID" Type="int" Nullable="false" />
           <Property Name="RatingsID" Type="int" />
+          <Property Name="Downloads" Type="int" />
         </EntityType>
         <EntityType Name="TranslationLines">
           <Key>
@@ -167,6 +168,18 @@
             </Principal>
             <Dependent Role="Media">
               <PropertyRef Name="LanguageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Media_Translation">
+          <End Role="Translation" Type="Self.Translation" Multiplicity="0..1" />
+          <End Role="Media" Type="Self.Media" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Translation">
+              <PropertyRef Name="TranslationID" />
+            </Principal>
+            <Dependent Role="Media">
+              <PropertyRef Name="TranslationID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -309,6 +322,10 @@
             <End Role="Language" EntitySet="Language" />
             <End Role="Media" EntitySet="Media" />
           </AssociationSet>
+          <AssociationSet Name="FK_Media_Translation" Association="Self.FK_Media_Translation">
+            <End Role="Translation" EntitySet="Translation" />
+            <End Role="Media" EntitySet="Media" />
+          </AssociationSet>
           <AssociationSet Name="FK_RequestTranslation_Media" Association="Self.FK_RequestTranslation_Media">
             <End Role="Media" EntitySet="Media" />
             <End Role="RequestTranslation" EntitySet="RequestTranslation" />
@@ -346,8 +363,7 @@
             <End Role="TranslationLines" EntitySet="TranslationLines" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="VERK014_H40Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -420,6 +436,8 @@
           <NavigationProperty Name="Language" Relationship="Self.FK_Media_Language" FromRole="Media" ToRole="Language" />
           <NavigationProperty Name="RequestTranslations" Relationship="Self.FK_RequestTranslation_Media" FromRole="Media" ToRole="RequestTranslation" />
           <NavigationProperty Name="Translations" Relationship="Self.FK_Translation_Media" FromRole="Media" ToRole="Translation" />
+          <Property Name="TranslationID" Type="Int32" />
+          <NavigationProperty Name="Translation" Relationship="VERK014_H40Model.FK_Media_Translation" FromRole="Medium" ToRole="Translation" />
         </EntityType>
         <EntityType Name="Rating">
           <Key>
@@ -427,7 +445,6 @@
           </Key>
           <Property Name="RatingsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Stars" Type="Int32" />
-          <Property Name="Votes" Type="Int32" />
           <NavigationProperty Name="Translations" Relationship="Self.FK_Translation_Ratings" FromRole="Ratings" ToRole="Translation" />
         </EntityType>
         <EntityType Name="RequestTranslation">
@@ -469,6 +486,8 @@
           <NavigationProperty Name="Medium" Relationship="Self.FK_Translation_Media" FromRole="Translation" ToRole="Media" />
           <NavigationProperty Name="Rating" Relationship="Self.FK_Translation_Ratings" FromRole="Translation" ToRole="Ratings" />
           <NavigationProperty Name="TranslationLines" Relationship="Self.FK_TranslationLines_Translation" FromRole="Translation" ToRole="TranslationLines" />
+          <NavigationProperty Name="Media" Relationship="VERK014_H40Model.FK_Media_Translation" FromRole="Translation" ToRole="Medium" />
+          <Property Name="Downloads" Type="Int32" />
         </EntityType>
         <EntityType Name="TranslationLine">
           <Key>
@@ -719,7 +738,23 @@
             <End Role="Translation" EntitySet="Translations" />
             <End Role="TranslationLines" EntitySet="TranslationLines" />
           </AssociationSet>
+          <AssociationSet Name="FK_Media_Translation" Association="VERK014_H40Model.FK_Media_Translation">
+            <End Role="Translation" EntitySet="Translations" />
+            <End Role="Medium" EntitySet="Media" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_Media_Translation">
+          <End Type="VERK014_H40Model.Translation" Role="Translation" Multiplicity="0..1" />
+          <End Type="VERK014_H40Model.Medium" Role="Medium" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Translation">
+              <PropertyRef Name="TranslationID" />
+            </Principal>
+            <Dependent Role="Medium">
+              <PropertyRef Name="TranslationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -769,6 +804,7 @@
           <EntitySetMapping Name="Media">
             <EntityTypeMapping TypeName="VERK014_H40Model.Medium">
               <MappingFragment StoreEntitySet="Media">
+                <ScalarProperty Name="TranslationID" ColumnName="TranslationID" />
                 <ScalarProperty Name="MediaID" ColumnName="MediaID" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Year" ColumnName="Year" />
@@ -791,7 +827,6 @@
               <MappingFragment StoreEntitySet="Ratings">
                 <ScalarProperty Name="RatingsID" ColumnName="RatingsID" />
                 <ScalarProperty Name="Stars" ColumnName="Stars" />
-                <ScalarProperty Name="Votes" ColumnName="Votes" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -819,6 +854,7 @@
           <EntitySetMapping Name="Translations">
             <EntityTypeMapping TypeName="VERK014_H40Model.Translation">
               <MappingFragment StoreEntitySet="Translation">
+                <ScalarProperty Name="Downloads" ColumnName="Downloads" />
                 <ScalarProperty Name="TranslationID" ColumnName="TranslationID" />
                 <ScalarProperty Name="Accepted" ColumnName="Accepted" />
                 <ScalarProperty Name="IceUserID" ColumnName="IceUserID" />

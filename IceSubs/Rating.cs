@@ -21,7 +21,6 @@ namespace IceSubs
     
         public int RatingsID { get; set; }
         public Nullable<int> Stars { get; set; }
-        public Nullable<int> Votes { get; set; }
     
         public virtual ICollection<Translation> Translations { get; set; }
     }

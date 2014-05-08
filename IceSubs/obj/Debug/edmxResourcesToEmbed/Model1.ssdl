@@ -54,6 +54,10 @@
     <Property Name="LanguageID" Type="int" Nullable="false" />
     <Property Name="GenreID" Type="int" Nullable="false" />
     <Property Name="DateAdded" Type="datetime" Nullable="false" />
+<<<<<<< HEAD
+=======
+    <Property Name="TranslationID" Type="int" />
+>>>>>>> e160d39519ce8f2771b4fce45637295603004ac7
   </EntityType>
   <EntityType Name="Ratings">
     <Key>
@@ -61,7 +65,10 @@
     </Key>
     <Property Name="RatingsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Stars" Type="int" />
+<<<<<<< HEAD
     <Property Name="Votes" Type="int" />
+=======
+>>>>>>> e160d39519ce8f2771b4fce45637295603004ac7
   </EntityType>
   <EntityType Name="RequestTranslation">
     <Key>
@@ -92,6 +99,10 @@
     <Property Name="MediaID" Type="int" Nullable="false" />
     <Property Name="LanguageID" Type="int" Nullable="false" />
     <Property Name="RatingsID" Type="int" />
+<<<<<<< HEAD
+=======
+    <Property Name="Downloads" Type="int" />
+>>>>>>> e160d39519ce8f2771b4fce45637295603004ac7
   </EntityType>
   <EntityType Name="TranslationLines">
     <Key>
@@ -165,6 +176,21 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+<<<<<<< HEAD
+=======
+  <Association Name="FK_Media_Translation">
+    <End Role="Translation" Type="Self.Translation" Multiplicity="0..1" />
+    <End Role="Media" Type="Self.Media" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Translation">
+        <PropertyRef Name="TranslationID" />
+      </Principal>
+      <Dependent Role="Media">
+        <PropertyRef Name="TranslationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+>>>>>>> e160d39519ce8f2771b4fce45637295603004ac7
   <Association Name="FK_RequestTranslation_Media">
     <End Role="Media" Type="Self.Media" Multiplicity="1" />
     <End Role="RequestTranslation" Type="Self.RequestTranslation" Multiplicity="*" />
@@ -304,6 +330,13 @@
       <End Role="Language" EntitySet="Language" />
       <End Role="Media" EntitySet="Media" />
     </AssociationSet>
+<<<<<<< HEAD
+=======
+    <AssociationSet Name="FK_Media_Translation" Association="Self.FK_Media_Translation">
+      <End Role="Translation" EntitySet="Translation" />
+      <End Role="Media" EntitySet="Media" />
+    </AssociationSet>
+>>>>>>> e160d39519ce8f2771b4fce45637295603004ac7
     <AssociationSet Name="FK_RequestTranslation_Media" Association="Self.FK_RequestTranslation_Media">
       <End Role="Media" EntitySet="Media" />
       <End Role="RequestTranslation" EntitySet="RequestTranslation" />
