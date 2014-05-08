@@ -18,7 +18,6 @@ namespace IceSubs
         {
             this.RequestTranslations = new HashSet<RequestTranslation>();
             this.Translations = new HashSet<Translation>();
-            DateAdded = DateTime.Now; 
         }
     
         public int MediaID { get; set; }
@@ -35,11 +34,13 @@ namespace IceSubs
         public int LanguageID { get; set; }
         public int GenreID { get; set; }
         public System.DateTime DateAdded { get; set; }
+        public Nullable<int> TranslationID { get; set; }
     
         public virtual Genre Genre { get; set; }
         public virtual IceUser IceUser { get; set; }
         public virtual Language Language { get; set; }
         public virtual ICollection<RequestTranslation> RequestTranslations { get; set; }
         public virtual ICollection<Translation> Translations { get; set; }
+        public virtual Translation Translation { get; set; }
     }
 }

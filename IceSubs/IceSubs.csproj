@@ -315,6 +315,7 @@
     <Content Include="Views\Media\All.cshtml" />
     <Content Include="Views\Media\Movies.cshtml" />
     <Content Include="Views\Media\TvSeries.cshtml" />
+    <Content Include="Views\Media\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

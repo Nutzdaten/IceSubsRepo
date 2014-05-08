@@ -18,6 +18,7 @@ namespace IceSubs
         {
             this.Comments = new HashSet<Comment>();
             this.TranslationLines = new HashSet<TranslationLine>();
+            this.Media = new HashSet<Medium>();
         }
     
         public int TranslationID { get; set; }
@@ -26,6 +27,7 @@ namespace IceSubs
         public int MediaID { get; set; }
         public int LanguageID { get; set; }
         public Nullable<int> RatingsID { get; set; }
+        public Nullable<int> Counter { get; set; }
     
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual IceUser IceUser { get; set; }
@@ -33,5 +35,6 @@ namespace IceSubs
         public virtual Medium Medium { get; set; }
         public virtual Rating Rating { get; set; }
         public virtual ICollection<TranslationLine> TranslationLines { get; set; }
+        public virtual ICollection<Medium> Media { get; set; }
     }
 }
